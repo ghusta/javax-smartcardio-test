@@ -1,0 +1,10 @@
+= Overview
+
+== Documentation
+
+* https://www.jcp.org/en/jsr/detail?id=268[JSR-268 : Java Smart Card I/O API]
+* https://doc.ubuntu-fr.org/smartcards[Ubuntu : Smart Cards], with example
+
+== Library
+
+* Java package : _javax.smartcardio_ (since Java 1.6)
