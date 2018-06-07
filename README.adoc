@@ -3,7 +3,9 @@
 == Documentation
 
 * https://www.jcp.org/en/jsr/detail?id=268[JSR-268 : Java Smart Card I/O API]
+* https://docs.oracle.com/javase/8/docs/jre/api/security/smartcardio/spec/[Java API] (javax.smartcardio)
 * https://doc.ubuntu-fr.org/smartcards[Ubuntu : Smart Cards], with example
+* https://stackoverflow.com/questions/tagged/smartcard+java[StackOverflow tags]
 
 == Library
 
