@@ -81,10 +81,10 @@ public class SmartCardIOTest {
                 // in the future should change to A0 00 00 01 51 00 00
 
                 byte[] baCommandAPDU = {(byte) 0x00, (byte) 0xA4, (byte) 0x04, (byte) 0x00, (byte) 0x08, (byte) 0xA0, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x03, (byte) 0x00, (byte) 0x00, (byte) 0x00};
-                System.out.println("APDU >>>: " + toHexaString(baCommandAPDU));
+                System.out.println("APDU Command  >>> " + toHexaString(baCommandAPDU));
 
                 ResponseAPDU r = channel.transmit(new CommandAPDU(baCommandAPDU));
-                System.out.println("APDU <<<: " + toHexaString(r.getBytes()));
+                System.out.println("APDU Response <<< " + toHexaString(r.getBytes()));
 
                 boolean reset = false;
                 card.disconnect(reset);
