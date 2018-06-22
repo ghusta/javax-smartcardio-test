@@ -21,10 +21,29 @@
         <!-- Cf. https://doc.ubuntu-fr.org/smartcards -->
         <!-- https://www.jcp.org/en/jsr/detail?id=268 -->
 
+        <!-- https://github.com/martinpaljak/apdu4j#usage-from-java -->
+        <dependency>
+            <groupId>com.github.martinpaljak</groupId>
+            <artifactId>apdu4j</artifactId>
+            <version>17.11.26</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
 
         <!-- TEST -->
