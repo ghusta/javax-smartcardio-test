@@ -70,6 +70,7 @@ public class SmartCardIOTest {
                 // Get ATR (Answer-To-Reset)
                 ATR cardATR = card.getATR();
                 byte[] baATR = cardATR.getBytes();
+                // See there if ATR is known: http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt
                 System.out.println("ATR: " + toHexaString(baATR, ":"));
 
                 // Select Card Manager
