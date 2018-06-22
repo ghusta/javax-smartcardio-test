@@ -2,12 +2,14 @@ package fr.husta.test;
 
 import org.apache.commons.codec.binary.BinaryCodec;
 import org.apache.commons.codec.binary.Hex;
+import org.junit.Assert;
 import org.junit.Test;
 
 import javax.smartcardio.Card;
 import javax.smartcardio.CardChannel;
 import javax.smartcardio.CardException;
 import javax.smartcardio.CardTerminal;
+import javax.smartcardio.CardTerminals;
 import javax.smartcardio.CommandAPDU;
 import javax.smartcardio.ResponseAPDU;
 import javax.smartcardio.TerminalFactory;
@@ -23,7 +25,25 @@ public class SmartCardIOTest {
         // Show the list of available terminals
         // On Windows see HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Calais\Readers
         TerminalFactory factory = TerminalFactory.getDefault();
-        List terminals = factory.terminals().list();
+        CardTerminals cardTerminals = factory.terminals();
+        List terminals = null;
+        try {
+            terminals = cardTerminals.list();
+        } catch (CardException e) {
+            Throwable cause = e.getCause();
+            // filter sun.security.smartcardio.PCSCException exception
+            if (cause != null &&
+                    "sun.security.smartcardio.PCSCException".equals(cause.getClass().getName())) {
+                String message = e.getMessage();
+                String causeMessage = cause.getMessage();
+                if ("SCARD_E_NO_READERS_AVAILABLE".equals(causeMessage)) {
+                    System.err.println("Can't test : " + causeMessage);
+                    Assert.fail();
+                }
+            }
+            throw e;
+        }
+
         System.out.println("Terminals count: " + terminals.size());
         System.out.println("Terminals: ");
         for (Object terminal : terminals) {
@@ -67,7 +87,7 @@ public class SmartCardIOTest {
                 ResponseAPDU r = channel.transmit(new CommandAPDU(baCommandAPDU));
                 System.out.println("APDU <<<: " + toHexaString(r.getBytes()));
 
-                boolean reset = true;
+                boolean reset = false;
                 card.disconnect(reset);
             }
         }
