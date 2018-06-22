@@ -37,8 +37,7 @@ public class SmartCardIOTest {
                 String message = e.getMessage();
                 String causeMessage = cause.getMessage();
                 if ("SCARD_E_NO_READERS_AVAILABLE".equals(causeMessage)) {
-                    System.err.println("Can't test : " + causeMessage);
-                    Assert.fail();
+                    Assert.fail("Can't test : " + causeMessage);
                 }
             }
             throw e;
