@@ -14,6 +14,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
+        <apdu4j.version>20.01.01</apdu4j.version>
     </properties>
 
     <dependencies>
@@ -24,14 +25,8 @@
         <!-- https://github.com/martinpaljak/apdu4j#usage-from-java -->
         <dependency>
             <groupId>com.github.martinpaljak</groupId>
-            <artifactId>apdu4j</artifactId>
-            <version>17.11.26</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>apdu4j-pcsc</artifactId>
+            <version>${apdu4j.version}</version>
         </dependency>
 
         <dependency>
